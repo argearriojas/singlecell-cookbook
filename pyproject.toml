@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "singlecell-cookbook"
 version = "0.1.1"
-description = "Add your description here"
+description = "Collection of tools for single-cell data analysis"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
