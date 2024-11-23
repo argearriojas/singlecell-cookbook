@@ -3,6 +3,9 @@
 
 # Override ignore rules for specific files and directories
 !.gitignore
+!.bumpversion.cfg
+!.pre-commit-config.yaml
+!.github
 
 # Python bytecode (compiled files)
 *.pyc
@@ -17,11 +20,6 @@ build/
 # Virtual environments
 venv/
 env/
-.env/
-
-# IDE specific files
-.vscode/
-.idea/
 
 # Editor backup files
 *~
@@ -35,7 +33,7 @@ env/
 htmlcov/
 
 # Documentation
-docs/_build/
+docs/build/
 
 # Compiled files
 *.pyd
@@ -46,5 +44,4 @@ docs/_build/
 *.out
 
 # Miscellaneous
-.DS_Store
 Thumbs.db
