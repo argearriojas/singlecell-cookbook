@@ -6,6 +6,7 @@
 !.bumpversion.cfg
 !.pre-commit-config.yaml
 !.github
+!.readthedocs.yaml
 
 # Python bytecode (compiled files)
 *.pyc
