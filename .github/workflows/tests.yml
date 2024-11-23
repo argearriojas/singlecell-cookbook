@@ -22,11 +22,13 @@ jobs:
     - name: Set up Conda environment
       uses: conda-incubator/setup-miniconda@v3
       with:
-        miniforge-variant: Mambaforge
+        miniforge-variant: Miniforge3
         miniforge-version: latest
         activate-environment: singlecell_cookbook-env
         python-version: ${{ matrix.python-version }}
         channels: conda-forge
+        channel-priority: strict
+        conda-solver: libmamba
 
     - name: Install dependencies
       shell: bash -el {0}
