@@ -1,7 +1,3 @@
-import logging
+"""A collection of tools for analyzing single-cell genomics data."""
 
-
-logging.basicConfig(
-    format="[%(asctime)s] %(name)s - %(levelname)s - %(message)s",
-    level=logging.INFO,
-)
+__version__ = "0.1.1"
