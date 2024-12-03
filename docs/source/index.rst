@@ -8,6 +8,7 @@ A collection of tools for analyzing single-cell genomics data.
    :caption: Contents:
 
    installation
+   api
    development
 
 Indices and tables
