@@ -20,7 +20,7 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
 ]
-dependencies = []
+dependencies = ["numpy", "pandas", "anndata", "scipy", "scanpy"]
 
 [project.optional-dependencies]
 test = ["pytest~=8.3.3"]
@@ -34,8 +34,8 @@ dev = [
     "bump2version~=1.0.1",
     "ruff~=0.8.0",
     "pre-commit~=4.0.1",
-    "test",
-    "docs",
+    "singlecell-cookbook[test]",
+    "singlecell-cookbook[docs]",
 ]
 
 [tool.hatch.build.targets.wheel]
