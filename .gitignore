@@ -44,7 +44,8 @@ docs/build/
 *.exe
 *.out
 
-# Some notebooks
+# Some scripts and notebooks
+___*.py
 _*.ipynb
 
 # Miscellaneous
