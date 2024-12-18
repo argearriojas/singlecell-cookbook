@@ -257,6 +257,30 @@ def go_enrichment(
     genes_list: list[str],
     verbosity: int = 2,
 ):
+    """
+    Runs a GO enrichment analysis.
+
+    Parameters
+    ----------
+    ontology: ParsedOntology
+        Parsed Gene Ontology object.
+    genes_universe: list[str]
+        List of all genes in the universe.
+    genes_list: list[str]
+        List of genes to test for enrichment.
+    verbosity: int, optional
+        How much output to display. Defaults to 2.
+
+    Returns
+    -------
+    pandas.DataFrame
+        A DataFrame with the results of the enrichment analysis. The index is the
+        GO term identifier and the columns are "hits", "background", "pvalue",
+        "bonferroni", and "benjamini". The "hits" and "background" columns are integer
+        values and the others are float values.
+
+    """
+
     go_graph = ontology.graph
     goterms = ontology.goterms
 
