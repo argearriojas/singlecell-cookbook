@@ -20,6 +20,25 @@ cd singlecell-cookbook
 pip install -e ".[dev]"
 ```
 
+### R Dependencies
+
+Some features (like pseudobulk analysis) require R and specific R packages. To use these features:
+
+1. Install the required R packages in R:
+
+```R
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install(c("edgeR", "MAST"))
+```
+
+2. Install the R dependencies in Python:
+
+```bash
+pip install "singlecell-cookbook[r]"
+```
+
 ## Documentation
 
 Documentation is available at [Read the Docs](https://singlecell-cookbook.readthedocs.io/).
