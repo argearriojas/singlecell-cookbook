@@ -18,6 +18,25 @@ class ParsedOntology(NamedTuple):
 def parse_obo(
     obo_filepath: str | Path, gene2go_associations: pd.DataFrame
 ) -> ParsedOntology:
+    """Parses an OBO file and gene2go associations dataframe into a graph.
+
+    The graph is represented as a dictionary where each key is a node ID and
+    the value is a set of node IDs that are connected to the node.
+
+    Parameters
+    ----------
+    obo_filepath : str | Path
+        Path to the OBO file.
+    gene2go_associations : pd.DataFrame
+        Dataframe containing the gene2go associations. It must contain at least
+        columns `gene_id` and `go_term_id`.
+
+    Returns
+    -------
+    ParsedOntology
+        NamedTuple containing the nodes list, the GO terms dataframe and the graph.
+    """
+
     # download from http://current.geneontology.org/ontology/go.obo
     obo_filepath = Path(obo_filepath)
 
