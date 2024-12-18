@@ -19,7 +19,7 @@ sys.path.insert(0, os.path.abspath("../../src"))
 project = "singlecell-cookbook"
 copyright = "2024, Argenis Arriojas"  # noqa: A001
 author = "Argenis Arriojas"
-release = "0.2.1"
+release = "0.2.2"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
