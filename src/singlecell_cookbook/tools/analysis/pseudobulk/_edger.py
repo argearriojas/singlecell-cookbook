@@ -18,6 +18,65 @@ def edger_pseudobulk(
     aggregate: bool = True,
     verbosity: int = 0,
 ) -> dict[str, pd.DataFrame]:
+    """
+    Fits a model using edgeR and computes top tags for a given condition vs
+    reference group.
+
+    Parameters
+    ----------
+    adata_ : AnnData
+        Annotated data matrix.
+    group_key : str
+        Key in AnnData object to use to group cells.
+    condition_group : str | list[str] | None, optional
+        Condition group to compare to reference group. If None, each group will be
+        contrasted to the corresponding reference group.
+    reference_group : str | None, optional
+        Reference group to compare condition group(s) to. If None, the condition group
+        is compared to the rest of the cells.
+    cell_identity_key : str | None, optional
+        If provided, separate contrasts will be computed for each identity. Defaults to None.
+    layer : str | None, optional
+        Layer in AnnData object to use. EdgeR requires raw counts. Defaults to None.
+    replicas_per_group : int, optional
+        Number of replicas to create for each group. Defaults to 10.
+    min_cells_per_group : int, optional
+        Minimum number of cells required for a group to be included. Defaults to 30.
+    bootstrap_sampling : bool, optional
+        Whether to use bootstrap sampling to create replicas. Defaults to True.
+    use_cells : dict[str, list[str]] | None, optional
+        If not None, only use the specified cells. Defaults to None. Dictionary key
+        is a categorical variable in the obs dataframe and the dictionary value is a
+        list of categories to include.
+    aggregate : bool, optional
+        Whether to aggregate cells before fitting the model. EdgeR requires a small
+        number of samples, so if adata_ is a single-cell experiment, the cells should
+        be aggregated. Defaults to True.
+    verbosity : int, optional
+        Verbosity level. Defaults to 0.
+
+    Returns
+    -------
+    dict[str, pd.DataFrame]
+        Dictionary of dataframes, one for each contrast, with the following columns:
+
+        * gene_ids : str
+            Gene IDs.
+        * logFC : float
+            Log2 fold change.
+        * logCPM : float
+            Log2 CPM.
+        * F: float
+            F-statistic.
+        * PValue : float
+            p-value.
+        * FDR : float
+            False discovery rate.
+        * pct_expr_cnd : float
+            Percentage of cells in condition group expressing the gene.
+        * pct_expr_ref : float
+            Percentage of cells in reference group expressing the gene.
+    """
     import anndata2ri
     import rpy2.robjects as robjects
     from rpy2.rinterface_lib.embedded import RRuntimeError
