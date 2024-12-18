@@ -49,14 +49,14 @@ def edger_pseudobulk(
     R(_fit_model_r_script)
 
     if condition_group is None:
-        condition_group_list = aggr_adata.obs[group_key].cat.categories
+        condition_group_list = aggr_adata.obs[group_key].unique()
     elif isinstance(condition_group, str):
         condition_group_list = [condition_group]
     else:
         condition_group_list = condition_group
 
     if cell_identity_key is not None:
-        cids = aggr_adata.obs[cell_identity_key].cat.categories
+        cids = aggr_adata.obs[cell_identity_key].unique()
     else:
         cids = [""]
 
@@ -83,7 +83,7 @@ def edger_pseudobulk(
         except RRuntimeError as e:
             print("Error fitting model for", condition_group)
             print("Error:", e)
-            print("Skipping...")
+            print("Skipping...", flush=True)
             continue
 
         if reference_group is None:
