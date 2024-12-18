@@ -28,10 +28,10 @@ jobs:
           # Configure git
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          
+
           # Get the current commit of the new version tag
           VERSION_COMMIT=$(git rev-parse ${{ steps.tag.outputs.tag }})
-          
+
           # Create/update stable tag
           echo "Moving stable tag to version ${{ steps.tag.outputs.tag }} (commit: $VERSION_COMMIT)"
           git tag -f stable $VERSION_COMMIT

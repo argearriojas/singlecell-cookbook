@@ -42,11 +42,11 @@ dev = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/aarriojas/singlecell-cookbook"
+"Homepage" = "https://github.com/argearriojas/singlecell-cookbook"
 "Documentation" = "https://singlecell-cookbook.readthedocs.io"
-"Repository" = "https://github.com/aarriojas/singlecell-cookbook"
-"Issues" = "https://github.com/aarriojas/singlecell-cookbook/issues"
-"Release Notes" = "https://github.com/aarriojas/singlecell-cookbook/releases"
+"Repository" = "https://github.com/argearriojas/singlecell-cookbook"
+"Issues" = "https://github.com/argearriojas/singlecell-cookbook/issues"
+"Release Notes" = "https://github.com/argearriojas/singlecell-cookbook/releases"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/singlecell_cookbook"]

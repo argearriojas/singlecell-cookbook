@@ -156,7 +156,7 @@ fit_model <- function(adata_, group_key, cell_identity_key = "None", verbosity =
         cat("Cell identity key:", cell_identity_key, "\n")
     }
 
-    # create an edgeR object with counts and grouping factor    
+    # create an edgeR object with counts and grouping factor
     y <- DGEList(assay(adata_, "X"), group = colData(adata_)[[group_key]])
     # filter out genes with low counts
     if (verbosity > 1){
