@@ -11,3 +11,11 @@ Preprocessing
    :members:
    :undoc-members:
    :show-inheritance:
+
+Analysis
+~~~~~~~~
+
+.. automodule:: singlecell_cookbook.tools.analysis
+   :members:
+   :undoc-members:
+   :show-inheritance:
