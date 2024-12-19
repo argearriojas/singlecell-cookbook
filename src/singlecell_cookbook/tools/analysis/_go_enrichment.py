@@ -13,6 +13,13 @@ class ParsedOntology(NamedTuple):
     nodes_list: list[dict]
     goterms: pd.DataFrame
     graph: dict[str, set[str]]
+    gene2go: pd.DataFrame
+
+    def __repr__(self):
+        n_terms = len(self.goterms)
+        n_associations = len(self.gene2go)
+
+        return f"ParsedOntology with {n_terms} GO terms and {n_associations} gene2go associations"
 
 
 def parse_obo(
@@ -222,7 +229,12 @@ def parse_obo(
             graph[gene_id] = set()
         for go_term_id in go_term_id_list:
             graph[gene_id].add(go_term_id)
-    return ParsedOntology(nodes_list=nodes_list, graph=graph, goterms=goterms)
+    return ParsedOntology(
+        nodes_list=nodes_list,
+        graph=graph,
+        goterms=goterms,
+        gene2go=gene2go_associations,
+    )
 
 
 def _go_term_hits(go_graph, genes_list, verbose=False):
@@ -249,6 +261,8 @@ def _go_term_hits(go_graph, genes_list, verbose=False):
             for child_id in go_graph[parent_id]:
                 q.put(child_id)
         totals += Counter(branch)
+
+    return totals
 
 
 def go_enrichment(
@@ -340,4 +354,4 @@ def go_enrichment(
         benjamini = multipletests(result_df.loc[mask, "pvalue"], method="fdr_bh")
         result_df.loc[mask, "benjamini"] = benjamini[1]
 
-    return result_df
+    return result_df.set_index("id")
